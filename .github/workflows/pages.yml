@@ -28,10 +28,10 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p publish
-          cat pack-v3/site.tar.gz.b64.* | base64 -d > /tmp/site.tar.gz
+          cat pack-v4/site.tar.gz.b64.* | base64 -d > /tmp/site.tar.gz
           tar -xzf /tmp/site.tar.gz -C publish
           test -f publish/index.html
-          # Replace site files at the repo root so stale hashed bundles are dropped
+          # Replace every site file at the repo root so stale assets/images are dropped
           rm -rf assets images
           rm -f index.html 404.html favicon.svg _redirects .nojekyll
           shopt -s dotglob
